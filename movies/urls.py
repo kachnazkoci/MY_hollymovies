@@ -1,11 +1,12 @@
 from django.urls import path
-from movies.views import HomepageView, ActorListView, MovieListView, MovieDetailView, \
-    ActorDetailView, Jinja2TestingView, DirectorListView, DirectorDetailView, ContactView, CreateMovieView, \
+from movies.views import ActorListView, MovieListView, MovieDetailView, \
+    ActorDetailView, Jinja2TestingView, DirectorListView, DirectorDetailView, CreateMovieView, \
     CreateActorView, UpdateMovieView, UpdateActorView, DeleteMovieView, DeleteActorView, CreateDirectorView, \
     UpdateDirectorView, DeleteDirectorView
+from hollymovies_5.views import ContactView, HomeView
 
 urlpatterns = (
-    path('', HomepageView.as_view(), name='homepage'),
+    path('', HomeView.as_view(), name=''),
     path('actors/', ActorListView.as_view(), name='actors'),
     path('movies/', MovieListView.as_view(), name='movies'),
     path('movie/<int:pk>/', MovieDetailView.as_view(), name='movie_detail'),

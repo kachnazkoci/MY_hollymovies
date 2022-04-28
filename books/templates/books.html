@@ -1,7 +1,9 @@
-{% include "base_books.html" %}
+{% include 'base_books.html' %}
 
 {% block body %}
+    <br><br>
     {% for book in object_list %}
-        <p>{{ book.title }}</p>
+        <p>{{ book.title }} - <a href="{% url "book_detail" book.pk %}">detail</a> - <a
+                href="{% url "update_book" book.pk %}">update</a></p>
     {% endfor %}
 {% endblock body %}

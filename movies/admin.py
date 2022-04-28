@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from movies.models import Movie, Actor, Director, Contact
+from movies.models import Movie, Actor, Director
+from hollymovies_5.models import Contact
 
 
 class MovieAdmin(admin.ModelAdmin):

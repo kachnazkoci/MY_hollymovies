@@ -1,27 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.shortcuts import resolve_url
-
-
-class BasePersonModel(models.Model):
-    GENDER_MALE = 'male'
-    GENDER_FEMALE = 'female'
-
-    GENDER_CHOICES = (
-        (GENDER_MALE, 'male'),
-        (GENDER_FEMALE, 'female')
-    )
-
-    name = models.CharField(max_length=256)
-    age = models.IntegerField()
-    gender = models.CharField(choices=GENDER_CHOICES, max_length=100)
-    born_at = models.DateField()
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        abstract = True
+from hollymovies_5.models import BasePersonModel
 
 
 class Actor(BasePersonModel):
@@ -66,9 +46,4 @@ class Movie(models.Model):
         return resolve_url('movie_detail', pk=self.id)
 
 
-class Contact(models.Model):
-    name = models.CharField(max_length=256)
-    email = models.EmailField()
-    subject = models.TextField()
-    phone_number = models.IntegerField()
-    contact_at = models.DateField()
+
