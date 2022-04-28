@@ -1,0 +1,12 @@
+{% include 'base_books.html' %}
+
+{% block body %}
+    <br><br>
+    <form action="{% url 'update_author' object.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update author">
+    </form>
+    <br><br>
+    <a href="{% url 'delete_author' object.id %}">Delete</a>
+{% endblock body %}

@@ -1,0 +1,17 @@
+{% include 'base_books.html' %}
+
+{% block body %}
+    <br><br>
+    Name: {{ object.name }}<br>
+    Age: {{ object.age }}<br>
+    Gender: {{ object.get_gender_display }}<br>
+    born_at: {{ object.born_at|date:"d.m Y"}}<br><br>
+    Books:<br>
+    {% for book in object.books.all %}
+        {{ book.title }}<br>
+    {% endfor %}
+
+
+
+{% endblock body %}
+

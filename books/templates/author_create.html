@@ -1,0 +1,10 @@
+{% include 'base_books.html' %}
+
+{% block body %}
+    <br><br>
+    <form action="{% url 'create_author' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Create Author">
+    </form>
+{% endblock body %}
