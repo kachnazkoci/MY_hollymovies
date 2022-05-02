@@ -1,3 +1,5 @@
+{% load static %}
+
 .selector-for-some-widget {
   box-sizing: content-box;
 }
@@ -244,7 +246,7 @@ a {
 
 @media screen and (min-width: 768px) {
     body {
-        margin: calc(var(--header-height) + 1rem) 0 0 0;
+        margin: calc(var(-header-height) + 1rem) 0 0 0;
         padding-left: calc(var(--nav-width) + 2rem)
     }
 
@@ -429,7 +431,7 @@ h1,h2,h3{
 }
 
 .wrapper .section .top_navbar{
-	background: rgb(7, 105, 185);
+	background: #0769B9FF;
 	height: 50px;
 	display: flex;
 	align-items: center;
@@ -437,8 +439,9 @@ h1,h2,h3{
 
 }
 
-.wrapper .section .top_navbar input{
-    margin: 1030px;
+
+.wrapper .section .top_navbar .form .input{
+    padding-left: 700px;
 }
 
 
@@ -460,4 +463,89 @@ body.active .wrapper .sidebar{
 body.active .wrapper .section{
 	margin-left: 0;
 	width: 100%;
+}
+
+
+/* footer */
+.footerCol {
+  padding: 50px 0;
+  text-align: center;
+}
+.socialCol li {
+  display: inline-block;
+}
+.socialCol li + li {
+  padding-left: 35px;
+}
+.socialCol img {
+  max-width: 30px;
+  max-height: 30px;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+.copyrightCol {
+	padding: 20px 0 0;
+  font-size: 14px;
+}
+.copyrightCol p {
+	margin: 0;
+}
+
+@media (min-width:576px) {
+  .swiper-pagination {
+    display: none;
+  }
+}
+@media (min-width:992px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+  	max-width: 890px;
+  }
+  .headerCol .container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (min-width:1200px) {
+  .headerCol .container-fluid {
+    padding-left: 55px;
+    padding-right: 55px;
+  }
+}
+
+@media (max-width:1199px) {
+  .navCol a {
+  	font-size: 18px;
+  }
+  .xlTitle {
+  	font-size: 40px;
+  }
+  .lgTitle {
+  	font-size: 28px;
+  }
+  .mdTitle {
+  	font-size: 24px;
+  }
+  .btn {
+  	font-size: 18px;
+  }
+  .cs1Title {
+  	min-height: 60px;
+  }
+  .bannerSection {
+  	padding: 150px 0 60px;
+  }
+  .sectionSpace {
+  	padding: 60px 0;
+  }
+  .footerCol {
+  	padding: 30px 0;
+  }
+  .innerPageBannerCol {
+  	padding: 150px 0 100px;
+  }
+}
+
+/*LIKE BUTTON*/
+.form .button {
+    background-color: #0769B9FF;
 }

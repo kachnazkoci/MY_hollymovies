@@ -1,9 +1,12 @@
 {% extends 'base_movies.html' %}
-
-{% block body %}
+{% block content %}
     <form action="{% url 'create_actor' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Create Actor">
+        <input type="submit" value=" ADD ACTOR ">
     </form>
-{% endblock body %}
+
+
+
+{% endblock %}
+

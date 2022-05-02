@@ -1,6 +1,8 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.template.response import TemplateResponse
 from django.views.generic import FormView, View
+
 
 from hollymovies_5.models import Home, Contact
 from hollymovies_5.forms import ContactForm
@@ -52,3 +54,6 @@ class ContactView(FormView):
 
     def form_invalid(self, form):
         return TemplateResponse(self.request, 'contact.html', context={'form': form})
+
+
+

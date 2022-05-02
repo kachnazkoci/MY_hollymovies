@@ -1,6 +1,5 @@
-{% include "base_movies.html" %}
-
-{% block body %}
+{% extends 'base_movies.html' %}
+{% block content %}
     Name: {{ object.name }}<br>
     Description: {{ object.description }}<br>
     Rating: {{ object.rating }}<br>
@@ -18,4 +17,4 @@
         <input type="submit" value="Like">
     </form>
 
-{% endblock body %}
+{% endblock %}

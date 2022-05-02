@@ -20,82 +20,25 @@
 </head>
 <body>
 
-{% block navbar %}
-
-    <div class="wrapper">
-        <div class="section">
-            <div class="top_navbar">
-                <div class="hamburger">
-                    <a href="#">
-                        <b class="fas fa-bars"></b>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-        <div class="sidebar">
-            <div class="profile">
-                <img src="https://tinyurl.com/eejmku59" alt="books_picture">
-                <h3>Books</h3>
-                <p>are uniquely portable magic.
-                    <br><i>Stephen King</i></p>
-
-            </div>
-            <ul>
-                <li>
-                    <a href="{% url 'home' %}">
-                        <span class="icon"><i class="fas fa-home"></i></span>
-                        <span class="item">Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'books' %}">
-                        <span class="icon"><i class="fas fa-book"></i></span>
-                        <span class="item">Books</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'authors' %}">
-                        <span class="icon"><i class="fas fa-people-carry"></i></span>
-                        <span class="item">Authors</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'create_book' %}">
-                        <span class="icon"><i class="fas fa-book-reader"></i></span>
-                        <span class="item">Create book</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'create_author' %}">
-                        <span class="icon"><i class="fas fa-person-booth"></i></span>
-                        <span class="item">Create author</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'contact' %}">
-                        <span class="icon"><i class="fas fa-user-friends"></i></span>
-                        <span class="item">Contact</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'admin:index' %}">
-                        <span class="icon"><i class="fas fa-user-shield"></i></span>
-                        <span class="item">Admin</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-{% endblock navbar %}
-
-
+{% include 'main/partials/nav_books.html' %}
 {% block body %}
 <div style="padding-left:16px">
   <h2>Hollymovies BOOKS - {{ page_name }}</h2>
 </div>
+{% block content %}{% endblock %}
 
+{% include 'main/partials/footer.html' %}
+    <!-- ================================
+    Start Scripts
+    ================================= -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://unpkg.com/swiper@7.0.5/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block extend_footer %}{%endblock%}
+    <!-- ================================
+    End Scripts
+    ================================= -->
 {% endblock body %}
 
 

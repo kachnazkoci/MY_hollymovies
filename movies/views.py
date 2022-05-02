@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.template.response import TemplateResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
@@ -48,6 +48,7 @@ class HollyMoviesDetailView(DetailView):
 class ActorDetailView(HollyMoviesDetailView):
     model = Actor
     template_name = 'actor_detail.html'
+    extra_context = {'page_name': Actor}
 
 # def actors_view(request):
 #     actors = Actor.objects.all()
@@ -66,7 +67,8 @@ class DirectorListView(ListView):
 
 class DirectorDetailView(HollyMoviesDetailView):
     model = Director
-    template_name = 'actor_detail.html'
+    template_name = 'director_detail.html'
+    extra_context = {'page_name': Director}
 
 
 class MovieListView(ListView):
@@ -78,7 +80,7 @@ class MovieListView(ListView):
         context.update({
             'best_movies': Movie.objects.filter(rating__gte=80).order_by('-rating'),
             'worst_movies': Movie.objects.filter(rating__lte=20).order_by('rating'),
-            'page_name': 'Movies',
+            'page_name': 'Movie List',
         })
         return context
 
@@ -86,7 +88,7 @@ class MovieListView(ListView):
 class MovieDetailView(HollyMoviesDetailView):
     model = Movie
     template_name = 'movie_detail.html'
-    extra_context = {'page_name': 'Movie Detail'}
+    extra_context = {'page_name': Movie}
 
     def post(self, request, pk, *args, **kwargs):
         movie = self.get_object()
@@ -164,51 +166,77 @@ class CreateMovieView(CreateView):
     template_name = 'movie_create.html'
     form_class = MovieForm
     model = Movie
+    extra_context = {'page_name': 'Add movie'}
 
 
 class CreateActorView(CreateView):
     template_name = 'actor_create.html'
     form_class = ActorForm
     model = Actor
+    extra_context = {'page_name': 'Add actor'}
 
 
 class UpdateMovieView(UpdateView):
     template_name = 'movie_update.html'
     form_class = MovieForm
     model = Movie
+    extra_context = {'page_name': Movie}
 
 
 class UpdateActorView(UpdateView):
     template_name = 'actor_update.html'
     form_class = ActorForm
     model = Actor
+    extra_context = {'page_name': Actor}
 
 
 class DeleteMovieView(DeleteView):
     template_name = 'movie_confirm_delete.html'
     model = Movie
     success_url = reverse_lazy('movies')
+    extra_context = {'page_name': Movie}
 
 
 class DeleteActorView(DeleteView):
     template_name = 'actor_confirm_delete.html'
     model = Actor
     success_url = reverse_lazy('actors')
+    extra_context = {'page_name': Actor}
 
 
 class CreateDirectorView(CreateView):
     template_name = 'director_create.html'
     form_class = DirectorForm
     model = Director
+    extra_context = {'page_name': 'Add Director'}
 
 
 class UpdateDirectorView(UpdateView):
     template_name = 'director_update.html'
     form_class = DirectorForm
     model = Director
+    extra_context = {'page_name': Director}
 
 
 class DeleteDirectorView(DeleteView):
     template_name = 'director_confirm_delete.html'
     model = Director
     success_url = reverse_lazy('directors')
+    extra_context = {'page_name': Director}
+
+
+def search_location(request):
+    context = {
+        'page_name': 'Search',
+    }
+    if request.method == "post":
+        searched = request.post['searched']
+        location = Movie.objects.filter(name__contains=searched)
+        return render(request,
+                      'search_location_movies.html',
+                      {'searched':searched,
+                   'location':location})
+    else:
+        return render(request,
+                      'search_location_movies.html',
+                      {})

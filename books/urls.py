@@ -1,5 +1,7 @@
 from django.urls import path
 
+from movies import views
+from books import views
 from books.views import BookListView, CreateBookView, BookDetailView, UpdateBookView, DeleteBookView, AuthorListView, \
     CreateAuthorView, AuthorDetailView, UpdateAuthorView, DeleteAuthorView
 from hollymovies_5.views import HomeView, ContactView
@@ -17,4 +19,6 @@ urlpatterns = [
     path('book/delete/<int:pk>/', DeleteBookView.as_view(), name='delete_book'),
     path('author/delete/<int:pk>/', DeleteAuthorView.as_view(), name='delete_author'),
     path('contact/', ContactView.as_view(), name='contact'),
+    path('search_location/movies/', views.search_location, name='search_location_movies'),
+    path('search_location/books/', views.search_location, name='search_location_books')
 ]

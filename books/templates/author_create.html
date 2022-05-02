@@ -1,10 +1,16 @@
-{% include 'base_books.html' %}
+{% extends 'base_books.html' %}
 
-{% block body %}
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
     <br><br>
     <form action="{% url 'create_author' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Create Author">
+        <input type="submit" value=" ADD AUTHOR ">
     </form>
-{% endblock body %}
+<!-- ================================
+End Content
+================================= -->
+{%endblock%}

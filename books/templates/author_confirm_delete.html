@@ -1,6 +1,9 @@
-{% include 'base_books.html' %}
+{% extends 'base_books.html' %}
 
-{% block body %}
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
     <br><br>
   <form method="post">
     {% csrf_token %}
@@ -9,4 +12,7 @@
     </p>
     <input type="submit" value="Delete">
   </form>
-{% endblock %}
+<!-- ================================
+End Content
+================================= -->
+{%endblock%}

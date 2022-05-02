@@ -1,0 +1,27 @@
+{% extends 'base_books.html' %}
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
+    <br><br>
+    <div style="text-align: center;">
+    {% if searched %}
+        <h1>You searched for {{ searched }}</h1><br/>
+
+        {% for book in books %}
+            {{ book }}<br/>
+        {% endfor %}
+
+    {% else %}
+        <h1>Hey! You forgot to search for book!</h1>
+    {% endif %}
+
+
+    </div>
+
+<!-- ================================
+End Content
+================================= -->
+{%endblock%}
+
+

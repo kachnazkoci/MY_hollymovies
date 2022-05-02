@@ -1,9 +1,21 @@
-{% extends 'base_movies.html' %}
+{% extends 'base.html' %}
 
-{% block body %}
-    <form action="{% url 'contact_view' %}" method="post">
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
+<div style="padding-left:16px">
+  <h2>CONTACT</h2><br>
+  <form action="{% url 'contact' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="submit">
+        <input type="submit" value=" SUBMIT ">
     </form>
-{% endblock body %}
+</div>
+
+<!-- ================================
+End Content
+================================= -->
+{%endblock%}
+
+

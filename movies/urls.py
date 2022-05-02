@@ -1,4 +1,6 @@
 from django.urls import path
+
+from movies import views
 from movies.views import ActorListView, MovieListView, MovieDetailView, \
     ActorDetailView, Jinja2TestingView, DirectorListView, DirectorDetailView, CreateMovieView, \
     CreateActorView, UpdateMovieView, UpdateActorView, DeleteMovieView, DeleteActorView, CreateDirectorView, \
@@ -24,4 +26,5 @@ urlpatterns = (
     path('director/create/', CreateDirectorView.as_view(), name='create_director'),
     path('director/update/<int:pk>/', UpdateDirectorView.as_view(), name='update_director'),
     path('director/delete/<int:pk>/', DeleteDirectorView.as_view(), name='delete_director'),
+    path('search_location/', views.search_location, name='search_location')
 )

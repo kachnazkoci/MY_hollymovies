@@ -1,9 +1,17 @@
-{% include 'base_books.html' %}
+{% extends 'base_books.html' %}
 
-{% block body %}
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
     <br><br>
     {% for book in object_list %}
         <p>{{ book.title }} - <a href="{% url "book_detail" book.pk %}">detail</a> - <a
                 href="{% url "update_book" book.pk %}">update</a></p>
     {% endfor %}
-{% endblock body %}
+<!-- ================================
+End Content
+================================= -->
+{%endblock%}
+
+

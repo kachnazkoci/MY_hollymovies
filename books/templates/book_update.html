@@ -1,6 +1,9 @@
-{% include 'base_books.html' %}
+{% extends 'base_books.html' %}
 
-{% block body %}
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
     <br><br>
     <form action="{% url 'update_book' object.id %}" method="post">
         {% csrf_token %}
@@ -9,4 +12,7 @@
     </form>
     <br><br>
     <a href="{% url 'delete_book' object.pk %}">Delete</a>
-{% endblock body %}
+<!-- ================================
+End Content
+================================= -->
+{%endblock%}

@@ -1,6 +1,5 @@
 {% extends 'base_movies.html' %}
-
-{% block body %}
+{% block content %}
     <form action="{% url 'update_actor' object.id %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
@@ -8,4 +7,4 @@
     </form>
     <br><br>
     <a href="{% url 'delete_actor' object.id %}">Delete</a>
-{% endblock body %}
+{% endblock %}

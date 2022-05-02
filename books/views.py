@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.template.response import TemplateResponse
 from django.urls import reverse_lazy
 from django.views import View
@@ -21,14 +21,14 @@ class HomeView(View):
 class BookListView(ListView):
     model = Book
     template_name = 'books.html'
-    extra_context = {'page_name': 'Books'}
+    extra_context = {'page_name': 'Book list'}
 
 
 class CreateBookView(CreateView):
     template_name = 'book_create.html'
     form_class = BookForm
     model = Book
-    extra_context = {'page_name': 'Creat Book'}
+    extra_context = {'page_name': 'Add Book'}
 
 
 class BookDetailView(DetailView):
@@ -39,7 +39,7 @@ class BookDetailView(DetailView):
 
     model = Book
     template_name = 'book_detail.html'
-    extra_context = {'page_name': 'Book Detail'}
+    extra_context = {'page_name': Book}
 
     def post(self, request, pk, *args, **kwargs):
         book = self.get_object()
@@ -53,14 +53,14 @@ class UpdateBookView(UpdateView):
     template_name = 'book_update.html'
     form_class = BookForm
     model = Book
-    extra_context = {'page_name': 'Book Update'}
+    extra_context = {'page_name': Book}
 
 
 class DeleteBookView(DeleteView):
     template_name = 'book_confirm_delete.html'
     model = Book
     success_url = reverse_lazy('books')
-    extra_context = {'page_name': 'Delete Book'}
+    extra_context = {'page_name': Book}
 
 
 class AuthorListView(ListView):
@@ -73,7 +73,7 @@ class CreateAuthorView(CreateView):
     template_name = 'author_create.html'
     form_class = AuthorForm
     model = Author
-    extra_context = {'page_name': 'Create Author'}
+    extra_context = {'page_name': 'Add Author'}
 
 
 class AuthorDetailView(DetailView):
@@ -84,7 +84,7 @@ class AuthorDetailView(DetailView):
 
     model = Author
     template_name = 'author_detail.html'
-    extra_context = {'page_name': 'Author Detail'}
+    extra_context = {'page_name': Author}
 
 
 
@@ -92,11 +92,28 @@ class UpdateAuthorView(UpdateView):
     template_name = 'author_update.html'
     form_class = AuthorForm
     model = Author
-    extra_context = {'page_name': 'Author Update'}
+    extra_context = {'page_name': Author}
 
 
 class DeleteAuthorView(DeleteView):
     template_name = 'author_confirm_delete.html'
     model = Author
     success_url = reverse_lazy('authors')
-    extra_context = {'page_name': 'Delete Author'}
+    extra_context = {'page_name': Author}
+
+
+def search_location(request):
+    context = {
+        'page_name': 'Search',
+    }
+    if request.method == "post":
+        searched = request.post['searched']
+        location = Book.objects.filter(name__contains=searched)
+        return render(request,
+                      'search_location_books.html',
+                      {'searched':searched,
+                       'location':location})
+    else:
+        return render(request,
+                      'search_location_books.html',
+                      {})

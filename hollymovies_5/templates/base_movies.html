@@ -20,100 +20,25 @@
 </head>
 <body>
 
-{% block navbar %}
-
-    <div class="wrapper">
-        <div class="section">
-            <div class="top_navbar">
-                <div class="hamburger">
-                    <a href="#">
-                        <b class="fas fa-bars"></b>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-        <div class="sidebar">
-            <div class="profile">
-                <img src="https://tinyurl.com/45a43mpv" alt="movie_picture">
-                <h3>Movies</h3>
-                <p>are like an expensive form of therapy.
-                    <br><i>Tim Burton</i></p>
-
-            </div>
-            <ul>
-                <li>
-                    <a href="{% url 'home' %}">
-                        <span class="icon"><i class="fas fa-home"></i></span>
-                        <span class="item">Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'actors' %}">
-                        <span class="icon"><i class="fas fa-user-friends"></i></span>
-                        <span class="item">Actors</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'movies' %}">
-                        <span class="icon"><i class="fas fa-film"></i></span>
-                        <span class="item">Movies</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'directors' %}">
-                        <span class="icon"><i class="fas fa-directions"></i></span>
-                        <span class="item">Directors</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'create_actor' %}">
-                        <span class="icon"><i class="fas fa-user"></i></span>
-                        <span class="item">Create actor</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'create_movie' %}">
-                        <span class="icon"><i class="fas fa-file-medical"></i></span>
-                        <span class="item">Create movie</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'create_director' %}">
-                        <span class="icon"><i class="fas fa-user-edit"></i></span>
-                        <span class="item">Create director</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'jinja2_testing_view' %}">
-                        <span class="icon"><i class="fas fa-temperature-high"></i></span>
-                        <span class="item">Template Cheatsheet</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'contact' %}">
-                        <span class="icon"><i class="fas fa-user-friends"></i></span>
-                        <span class="item">Contact</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'admin:index' %}">
-                        <span class="icon"><i class="fas fa-user-shield"></i></span>
-                        <span class="item">Admin</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-{% endblock navbar %}
-
-
+{% include 'main/partials/nav_movies.html' %}
 {% block body %}
-<div style="padding-left:16px">
-  <h2>Hollymovies BOOKS - {{ page_name }}</h2>
-</div>
+        <div style="padding-left:16px">
+          <h2>Hollymovies MOVIES - {{ page_name }}</h2>
+        </div><br>
+{% block content %}{% endblock %}
 
+{% include 'main/partials/footer.html' %}
+    <!-- ================================
+    Start Scripts
+    ================================= -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://unpkg.com/swiper@7.0.5/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block extend_footer %}{%endblock%}
+    <!-- ================================
+    End Scripts
+    ================================= -->
 {% endblock body %}
 
 

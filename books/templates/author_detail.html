@@ -1,6 +1,9 @@
-{% include 'base_books.html' %}
+{% extends 'base_books.html' %}
 
-{% block body %}
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
     <br><br>
     Name: {{ object.name }}<br>
     Age: {{ object.age }}<br>
@@ -12,6 +15,9 @@
     {% endfor %}
 
 
+<!-- ================================
+End Content
+================================= -->
+{%endblock%}
 
-{% endblock body %}
 

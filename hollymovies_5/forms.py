@@ -35,3 +35,4 @@ class ContactForm(forms.Form):
 
     def clean_name(self):
         return self.data.get('name').lower()
+

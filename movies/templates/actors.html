@@ -1,7 +1,8 @@
-{% include "base_movies.html" %}
+{% extends 'base_movies.html' %}
+{% block content %}
 
-{% block body %}
+
     {% for actor in object_list %}
         <p>{{ actor.name }} age: {{ actor.age }} - <a href="{% url "actor_detail" actor.id %}">detail</a> - <a href="{% url "update_actor" actor.id %}">update</a></p>
     {% endfor %}
-{% endblock body %}
+{% endblock  %}
