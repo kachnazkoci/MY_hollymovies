@@ -47,3 +47,4 @@ var swiper = new Swiper(".certificatesSlider", {
     },
   },
 });
+

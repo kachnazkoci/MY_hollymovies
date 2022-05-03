@@ -440,8 +440,8 @@ h1,h2,h3{
 }
 
 
-.wrapper .section .top_navbar .form .input{
-    padding-left: 700px;
+.wrapper .section .top_navbar gcse-search{
+    padding: 0 700px;
 }
 
 
@@ -549,3 +549,67 @@ body.active .wrapper .section{
 .form .button {
     background-color: #0769B9FF;
 }
+
+/*
+!*SEARCHER BOX*!
+*{
+  box-sizing: border-box;
+}
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: 'Knewave', cursive;
+}
+label{
+  width: 100%;
+  max-width: 300px;
+}
+input{
+  width: 100%;
+  display: flex;
+  padding: 15px;
+  background-color: white;
+  border: 2px solid black;
+  color: #111;
+  font-size: 15px;
+  box-shadow: 3px 1px 0px 2px, 0px -1px 0px 2px rgba(0, 0, 0, 0.62);
+  height: 58px;
+  transform: skew(-3deg, 1deg);
+  font-family: 'Knewave', cursive;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  &:focus,
+  &:valid{
+    outline: none;
+    ~ ul li{
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}){
+          &::before{
+            filter: blur(20px);
+            transform: translate(0, -35px) rotate(-210deg);
+          }
+          &::after{
+            filter: blur(0);
+            transform: scale(1) rotate(0);
+          }
+        }
+      }
+      @for $i from 1 through 6{
+        &:nth-child(#{$i}){
+          &::after{
+            transition-delay: 200ms + ($i * 200ms);
+          }
+        }
+      }
+    }
+  }
+}
+label{
+  position: relative;
+}
+*/
